@@ -9,23 +9,34 @@ import armor.rarity
 import weapons.blades
 import weapons.weaponClass
 import weapons.rarity
+import enemies.creatures
+import enemies.enemyClass
+import sys
+
+
+yesList = ["Y", "y", "YES", "Yes", "yes"]
+noList = ["N", "n", "NO", "No", "no"]
 
 
 def startGame():
     welcomeMessage()
-    menu = True
-    while menu:
-        keepPlaying = str(input("Would you like to start a new game? Y/N:  "))
+    while True:
+        print("\nMAIN MENU")
+        print("1 - Generate Character\n2 - Generate Enemy\n3 - Exit")
+        menuOption = str(input("What would you like to do? (1,2,3):  "))
 
-        if keepPlaying == "Y" or "y" or "YES" or "yes" or "Yes":
-            menu = False
+        if menuOption == "1":
             generateCharacter()
-        elif keepPlaying == "N" or "no" or "NO" or "no" or "No":
-            menu = False
+
+        if menuOption == "2":
+            generateEnemy()
+
+        elif menuOption == "3":
+            print(Colors.HEADER + "\nThank you for playing!")
+            sys.exit(0)
+
         else:
             print(Colors.WARNING + "Error: Enter 'Y' or 'N'\n" + Colors.ENDC)
-
-    print("\nThank you for playing!")
 
 
 def generateCharacter():
@@ -112,6 +123,40 @@ def generateCharacter():
 
         elif selection == "2":
             print("Too Bad")
+
+
+def generateEnemy():
+    print(Colors.WARNING + "\nHere we will generate random enemies." + Colors.ENDC)
+    sleep(1)
+
+    menuExit = False
+    while not menuExit:
+        print("\n1 - Wolf\n2 - Bear\n3 - Dragon\n4 - Exit")
+        menuOption = input("What would you like to do? (1,2,3):   ")
+
+        if menuOption == "1":
+            newWolf = enemies.creatures.wolf()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{newWolf.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "2":
+            newBear = enemies.creatures.bear()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{newBear.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "3":
+            newDragon = enemies.creatures.dragon()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{newDragon.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "4":
+            menuExit = True
+
+        else:
+            print(Colors.WARNING + "Error: Invalid Input" + Colors.ENDC)
 
 
 def welcomeMessage():

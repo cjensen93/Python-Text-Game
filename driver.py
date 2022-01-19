@@ -11,6 +11,7 @@ import weapons.weaponClass
 import weapons.rarity
 import enemies.creatures
 import enemies.enemyClass
+import combat.combat
 import sys
 
 
@@ -22,7 +23,7 @@ def startGame():
     welcomeMessage()
     while True:
         print("\nMAIN MENU")
-        print("1 - Generate Character\n2 - Generate Enemy\n3 - Exit")
+        print("1 - Generate Character\n2 - Generate Enemy\n3 - Combat\n4 - Exit")
         menuOption = str(input("What would you like to do? (1,2,3):  "))
 
         if menuOption == "1":
@@ -31,7 +32,10 @@ def startGame():
         if menuOption == "2":
             generateEnemy()
 
-        elif menuOption == "3":
+        if menuOption == "3":
+            combat.combat.setup()
+
+        elif menuOption == "4":
             print(Colors.HEADER + "\nThank you for playing!")
             sys.exit(0)
 
@@ -180,7 +184,7 @@ def welcomeMessage():
     print("                     /____/ " + Colors.ENDC)
     print()
 
-    print(Colors.HEADER + "By Caleb Jensen (2021)" + Colors.ENDC)
+    print(Colors.HEADER + "By Caleb Jensen (2022)" + Colors.ENDC)
     print("\n\n\n")
     sleep(2)
 

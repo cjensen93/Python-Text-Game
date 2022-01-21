@@ -10,6 +10,7 @@ import weapons.blades
 import weapons.weaponClass
 import weapons.rarity
 import enemies.creatures
+import enemies.humanoid
 import enemies.enemyClass
 import combat.combat
 import sys
@@ -135,28 +136,46 @@ def generateEnemy():
 
     menuExit = False
     while not menuExit:
-        print("\n1 - Wolf\n2 - Bear\n3 - Dragon\n4 - Exit")
-        menuOption = input("What would you like to do? (1,2,3):   ")
+        print("\n1 - Wolf\n2 - Bear\n3 - Dragon\n4 - Bandit\n5 - Knight\n6 - Sorcerer\n7 - Exit")
+        menuOption = input("What would you like to do? (1-7):   ")
 
         if menuOption == "1":
-            newWolf = enemies.creatures.wolf()
+            enemy = enemies.creatures.wolf()
             print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
-            print(f"{newWolf.getAll()}")
+            print(f"{enemy.getAll()}")
             print(Colors.WARNING + "----------------------" + Colors.ENDC)
 
         elif menuOption == "2":
-            newBear = enemies.creatures.bear()
+            enemy = enemies.creatures.bear()
             print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
-            print(f"{newBear.getAll()}")
+            print(f"{enemy.getAll()}")
             print(Colors.WARNING + "----------------------" + Colors.ENDC)
 
         elif menuOption == "3":
-            newDragon = enemies.creatures.dragon()
+            enemy = enemies.creatures.dragon()
             print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
-            print(f"{newDragon.getAll()}")
+            print(f"{enemy.getAll()}")
             print(Colors.WARNING + "----------------------" + Colors.ENDC)
 
         elif menuOption == "4":
+            enemy = enemies.humanoid.bandit()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{enemy.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "5":
+            enemy = enemies.humanoid.knight()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{enemy.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "6":
+            enemy = enemies.humanoid.sorcerer()
+            print(Colors.WARNING + "\n----------------------" + Colors.ENDC)
+            print(f"{enemy.getAll()}")
+            print(Colors.WARNING + "----------------------" + Colors.ENDC)
+
+        elif menuOption == "7":
             menuExit = True
 
         else:

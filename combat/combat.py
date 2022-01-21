@@ -1,53 +1,46 @@
 from enemies import creatures
+from enemies import humanoid
 from random import randint
 from time import sleep
 
 
 def setup():
-    print("\033[93m" + "\nHere we will generate random enemies to fight." + "\033[0m")
+    print("\033[93m" + "\nHere we will generate two random enemies to fight." + "\033[0m")
 
-    enemyOne = firstMenu()
-    enemyTwo = secondMenu()
+    print("\nSelect the first thing to fight:")
+    enemyOne = menu()
+    print("\nSelect the second thing to fight:")
+    enemyTwo = menu()
     combat(enemyOne, enemyTwo)
 
 
-def firstMenu():
+def menu():
     while True:
-        print("\n1 - Wolf\n2 - Bear\n3 - Dragon")
-        firstSelection = input("Select the first creature to fight:   ")
+        selection = input("\n1 - Wolf\n2 - Bear\n3 - Dragon\n4 - Bandit\n5 - Knight\n6 - Sorcerer\nSelect:  ")
 
-        if firstSelection == "1":
-            enemyOne = creatures.wolf()
-            return enemyOne
+        if selection == "1":
+            enemy = creatures.wolf()
+            return enemy
 
-        elif firstSelection == "2":
-            enemyOne = creatures.bear()
-            return enemyOne
+        elif selection == "2":
+            enemy = creatures.bear()
+            return enemy
 
-        elif firstSelection == "3":
-            enemyOne = creatures.dragon()
-            return enemyOne
+        elif selection == "3":
+            enemy = creatures.dragon()
+            return enemy
 
-        else:
-            print("\033[93m" + "Error: Incorrect Input" + "\033[0m")
+        elif selection == "4":
+            enemy = humanoid.bandit()
+            return enemy
 
+        elif selection == "5":
+            enemy = humanoid.knight()
+            return enemy
 
-def secondMenu():
-    while True:
-        print("\n1 - Wolf\n2 - Bear\n3 - Dragon")
-        firstSelection = input("Select the second creature to fight:   ")
-
-        if firstSelection == "1":
-            enemyOne = creatures.wolf()
-            return enemyOne
-
-        elif firstSelection == "2":
-            enemyOne = creatures.bear()
-            return enemyOne
-
-        elif firstSelection == "3":
-            enemyOne = creatures.dragon()
-            return enemyOne
+        elif selection == "6":
+            enemy = humanoid.sorcerer()
+            return enemy
 
         else:
             print("\033[93m" + "Error: Incorrect Input" + "\033[0m")
